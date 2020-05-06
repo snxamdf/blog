@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sxm.blog.admin.mapper.RoleMapper">
+    <sql id="TABLE">
+        t_role
+    </sql>
+    <sql id="COLMS">
+        id,
+        role_name as 'roleName'
+    </sql>
+
+    <insert id="insert" parameterType="com.sxm.blog.admin.entity.Role">
+        insert into <include refid="TABLE"/> (role_name)
+        values (#{roleName});
+    </insert>
+
+    <select id="getById" resultType="com.sxm.blog.admin.entity.Role">
+        select <include refid="COLMS"/>
+        from <include refid="TABLE"/>
+        where id = #{id}
+    </select>
+
+    <select id="list" resultType="com.sxm.blog.admin.entity.Role">
+        select <include refid="COLMS"/>
+        from <include refid="TABLE"/>
+    </select>
+
+    <select id="getByUserId" resultType="com.sxm.blog.admin.entity.Role">
+        select <include refid="COLMS"/>
+        from t_role a
+        where a.id in (select b.role_id from t_user_roles b where b.user_id = #{userId})
+    </select>
+</mapper>

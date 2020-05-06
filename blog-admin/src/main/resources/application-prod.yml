@@ -1,0 +1,14 @@
+spring:
+  redis:
+    host: 192.168.1.11
+    port: 6379
+    password: letters123456 # 密码（默认为空）
+    timeout: 6000  # 连接超时时长（毫秒）
+    database: 5
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/manage?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+    username: root
+    password: as921340
+    
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    connection-test-query: SELECT 1

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: manage
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+logging:
+  file: log/blog.log
+  level:
+    root: info
+    com.sxm.blog: info
+    org.springframework.boot.autoconfigure: error
+
+mybatis:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  type-aliases-package: com.sxm.blog.admin.entity

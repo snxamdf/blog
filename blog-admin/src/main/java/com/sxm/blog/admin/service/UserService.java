@@ -1,0 +1,1 @@
+package com.sxm.blog.admin.service;/** * @author * @description * @date 2020/5/6 */public interface UserService {}

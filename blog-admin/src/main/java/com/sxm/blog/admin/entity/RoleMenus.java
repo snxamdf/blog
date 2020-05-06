@@ -1,0 +1,1 @@
+package com.sxm.blog.admin.entity;import lombok.Data;/** * @author * @description * @date 2020/5/6 */@Datapublic class RoleMenus {      private Integer id;//int(8) NOT NULL AUTO_INCREMENT,      private Integer roleId;//int(8) DEFAULT NULL,      private Integer menuId;//int(8) DEFAULT NULL,}

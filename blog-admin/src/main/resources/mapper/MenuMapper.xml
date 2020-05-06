@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sxm.blog.admin.mapper.MenuMapper">
+    <sql id="TABLE">
+        t_menu
+    </sql>
+    <sql id="COLMS">
+        id,
+        menu_name as 'menuName',
+        menu_url as 'menuUrl',
+        menu_code as 'menuCode',
+        parent_id as 'parentId',
+        menu_type as 'menuType',
+        order_num as 'orderNum',
+        creator,
+        create_time as 'createTime',
+        updator,
+        update_time as 'updateTime',
+        deleted
+    </sql>
+
+    <insert id="insert" parameterType="com.sxm.blog.admin.entity.Menu">
+        insert into
+        <include refid="TABLE"/>
+        (menu_name, menu_url,menu_code,parent_id,menu_type,order_num,creator,create_time,updator,update_time,deleted)
+        values (#{menuName},#{menuUrl}),#{menuCode},#{parentId},#{menuType},#{orderNum},#{creator},#{createTime},#{updator},
+        #{update_time},#{deleted});
+    </insert>
+
+    <select id="getById" resultType="com.sxm.blog.admin.entity.Menu">
+        select
+        <include refid="COLMS"/>
+        from
+        <include refid="TABLE"/>
+        where id = #{id}
+    </select>
+
+    <select id="list" resultType="com.sxm.blog.admin.entity.Menu">
+        select
+        <include refid="COLMS"/>
+        from
+        <include refid="TABLE"/>
+    </select>
+
+    <select id="getByRoleIds" resultType="com.sxm.blog.admin.entity.Menu">
+        select
+        <include refid="COLMS"/>
+        from t_menu a
+        where a.id in (
+            select b.menu_id from t_role_menus b
+                where b.role_id in
+                    <foreach collection="roles" item="item" open="(" close=")" separator=",">
+                        #{item.id}
+                    </foreach>
+        )
+    </select>
+</mapper>

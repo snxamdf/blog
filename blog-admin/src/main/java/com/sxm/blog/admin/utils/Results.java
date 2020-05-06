@@ -1,0 +1,1 @@
+package com.sxm.blog.admin.utils;/** * @author * @description * @date 2020/5/6 */public class Results {    public static <T> Result<T> success(int code, String msg, T data) {        return new Result<>(true, code, msg, data);    }    public static <T> Result<T> fail(int code, String msg, T data) {        return new Result<>(false, code, msg, data);    }}
