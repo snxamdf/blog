@@ -6,9 +6,9 @@ spring:
     timeout: 6000  # 连接超时时长（毫秒）
     database: 5
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/manage?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/blog?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
     username: root
-    password: as921340
+    password: root
     
     driver-class-name: com.mysql.cj.jdbc.Driver
     connection-test-query: SELECT 1
