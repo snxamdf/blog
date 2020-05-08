@@ -11,6 +11,7 @@ axios.interceptors.request.use(
     if (token) {
       config.headers['token'] = 'set-token-value'
     }
+    config.headers['X-Requested-With'] = 'XMLHttpRequest'
     if (config.method === 'post') {
       config.data = qs.stringify(config.data)
       config.headers['Content-Type'] = 'application/x-www-form-urlencoded'

@@ -3,6 +3,7 @@
     <el-button @click="logout">退出</el-button>
     <el-button @click="login">登录</el-button>
     <el-button @click="testmain">测试main</el-button>
+    <el-button @click="userrole">权限访问</el-button>
 
     <div style="display: flex; margin-top: 20px; height: 100px;">
       {{msg}}
@@ -41,6 +42,16 @@
       testmain:function () {
         console.log("发送请求")
         let url = this.HOST + "/main"
+        console.log("testmain", url)
+        this.$get(url, {}).then(response => {
+          console.log(response);
+        }, error => {
+          //console.log(error);
+        })
+      },
+      userrole:function () {
+        console.log("发送请求")
+        let url = this.HOST + "/user"
         console.log("testmain", url)
         this.$get(url, {}).then(response => {
           console.log(response);
