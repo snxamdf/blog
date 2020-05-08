@@ -1,14 +1,13 @@
 import axios from 'axios';
 import qs from 'qs';
 
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 1000 * 30;
 //axios.defaults.baseURL = 'http://localhost:8080'; //使用这个配置 vue代理会失效
 
 //http request 拦截器
 axios.interceptors.request.use(
   config => {
     let token = true
-    console.log("request use", config)
     if (token) {
       config.headers['token'] = 'set-token-value'
     }
