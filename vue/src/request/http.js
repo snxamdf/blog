@@ -23,6 +23,7 @@ axios.interceptors.request.use(
     return Promise.reject(err);
   }
 );
+
 //http response 拦截器
 axios.interceptors.response.use(response => {
   return response
@@ -81,14 +82,17 @@ axios.interceptors.response.use(response => {
  * @param data
  * @returns {Promise}
  */
-
 export function fetch(url, params = {}) {
   return new Promise((resolve, reject) => {
     axios.get(url, {
       params: params
     })
       .then(response => {
-        resolve(response.data);
+        if (response != undefined) {
+          resolve(response.data);
+        } else {
+          console.log("fetch error:", response)
+        }
       })
       .catch(err => {
         reject(err)
@@ -103,13 +107,14 @@ export function fetch(url, params = {}) {
  * @param data
  * @returns {Promise}
  */
-
 export function get(url, data = {}) {
   return new Promise((resolve, reject) => {
     axios.get(url, data)
       .then(response => {
-        if (response) {
+        if (response != undefined) {
           resolve(response.data);
+        } else {
+          console.log("get error:", response)
         }
       }, err => {
         reject(err)
@@ -123,14 +128,14 @@ export function get(url, data = {}) {
  * @param data
  * @returns {Promise}
  */
-
 export function post(url, data = {}) {
   return new Promise((resolve, reject) => {
     axios.post(url, data)
       .then(response => {
         if (response != undefined) {
-          console.log("post:", response)
           resolve(response.data);
+        } else {
+          console.log("post:", response)
         }
       }, err => {
         reject(err)
@@ -144,12 +149,15 @@ export function post(url, data = {}) {
  * @param data
  * @returns {Promise}
  */
-
 export function patch(url, data = {}) {
   return new Promise((resolve, reject) => {
     axios.patch(url, data)
       .then(response => {
-        resolve(response.data);
+        if (response != undefined) {
+          resolve(response.data);
+        } else {
+          console.log("patch error:", response)
+        }
       }, err => {
         reject(err)
       })
@@ -162,12 +170,15 @@ export function patch(url, data = {}) {
  * @param data
  * @returns {Promise}
  */
-
 export function put(url, data = {}) {
   return new Promise((resolve, reject) => {
     axios.put(url, data)
       .then(response => {
-        resolve(response.data);
+        if (response != undefined) {
+          resolve(response.data);
+        } else {
+          console.log("put error:", response)
+        }
       }, err => {
         reject(err)
       })

@@ -5,8 +5,7 @@ import web from './web/web'
 
 Vue.use(Router)
 
-const routes = []
-const baseRoutes = routes.concat(admin, web);
+const baseRoutes = [].concat(admin, web);
 
 export default new Router({
   routes: baseRoutes

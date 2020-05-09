@@ -6,6 +6,7 @@
     <el-button @click="userrole">权限访问</el-button>
     <router-link to="/admin">admin</router-link>
     <router-link to="/web">web</router-link>
+
     <router-view></router-view>
   </div>
 </template>
