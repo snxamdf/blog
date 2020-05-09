@@ -4,15 +4,17 @@
     <el-button @click="login">登录</el-button>
     <el-button @click="testmain">测试main</el-button>
     <el-button @click="userrole">权限访问</el-button>
-
-    <div style="display: flex; margin-top: 20px; height: 100px;">
-      {{msg}}
-    </div>
+    <router-link to="/admin">admin</router-link>
+    <router-link to="/web">web</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   export default {
+    created() {
+      console.log("created")
+    },
     methods: {
       demo: function () {
 
@@ -20,7 +22,7 @@
       login: function () {
         let url = this.HOST + "/login"
         console.log("登录", url)
-        this.$post(url, {
+        this.$http.post(url, {
           "username": "admin",
           "password": "admin"
         }).then(response => {
@@ -33,27 +35,27 @@
         console.log("发送请求")
         let url = this.HOST + "/logout"
         console.log("登出", url)
-        this.$get(url, {}).then(response => {
+        this.$http.get(url, {}).then(response => {
           console.log(response);
         }, error => {
           //console.log(error);
         })
       },
-      testmain:function () {
+      testmain: function () {
         console.log("发送请求")
         let url = this.HOST + "/main"
         console.log("testmain", url)
-        this.$get(url, {}).then(response => {
+        this.$http.get(url, {}).then(response => {
           console.log(response);
         }, error => {
           //console.log(error);
         })
       },
-      userrole:function () {
+      userrole: function () {
         console.log("发送请求")
         let url = this.HOST + "/user"
         console.log("testmain", url)
-        this.$get(url, {}).then(response => {
+        this.$http.get(url, {}).then(response => {
           console.log(response);
         }, error => {
           //console.log(error);
