@@ -1,0 +1,1 @@
+import java.util.HashMap;/** * @author * @description * @date 2020/5/22 */public class TestMain {    public static void main(String[] args) {        HashMap<Integer, String> map = new HashMap<>();        map.put(1, "ac");    }}
